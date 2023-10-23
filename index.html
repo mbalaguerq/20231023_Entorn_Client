@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="cssbase.css">
+	
+	<title>Captura d'events</title>
+
+</head>
+
+<body>
+
+	<!--Els events comencen amb on... el que hi ha dins és javascript-->
+	<h1 onclick="alert('Has fet clic')">Sóc un títol</h1>
+	<h1 ondblclick="alert('Has fet clic')">Sóc un títol</h1>
+
+	<!--Ara cridem a una funció que hem creat abaix, anomenada envia-->
+	<h1 ondblclick="envia()">Sóc un títol</h1>
+
+	<!--Anem a treure-ho de la etiqueta i posar-ho a part-->
+	<h1>Sóc un titol</h1>
+
+	<h1 id="contingut"></h1>
+
+
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="jquery.min.js"></script>
+	<script>
+			function envia(){
+
+				alert("Hola");
+
+			}
+			//aquesta funció captura mostra la tecla que s'ha capturat i guardat a l'objecte event que ja existeix
+			//accedint a event.key
+			function tecla(){
+				//instrucció per que no faci el que té assignat per defecte
+				event.preventDefault();
+
+				alert("S'ha premut una tecla");
+				alert("S'ha presionat la tecla: " + event.key);
+
+			}
+	</script>
+	<script>
+		//utilitzem jquery per fer un event que afecti a tots els h1.
+		//al posar l'event fora de la etiqueta, no cal que comenci amb on...
+
+		$(".h1").click(envia); 
+
+		//Aquesta instrucció substituirà el h1 amb id = contingut, per un html amb etiq h1
+		$("#contingut").html("<h1>Marc</h1>");
+
+		//Aquesta instrucció executarà la funció tecla quen hi hagi l'event keydown.
+		$("body").keydown(tecla);
+
+
+
+
+
+	</script>
+</body>
+</html>
